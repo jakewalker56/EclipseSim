@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207060614) do
+ActiveRecord::Schema.define(version: 20150207110947) do
 
   create_table "battles", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150207060614) do
     t.datetime "updated_at"
     t.integer  "offense_id"
     t.integer  "defense_id"
+    t.integer  "iterations"
   end
 
   create_table "cannons", force: true do |t|

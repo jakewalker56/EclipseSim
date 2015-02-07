@@ -25,11 +25,13 @@ class BattlesController < ApplicationController
   end
 
   def simulate
-    result = @battle.simulate
+    result = @battle.simulate()
     @offense = Fleet.find(@battle.offense_id)
     @defense = Fleet.find(@battle.defense_id)
     @winner = result[:winner]
     @percentage = result[:win_percentage]
+    @winner_wins = result[:winner_wins]
+    @loser_wins = result[:loser_wins]
   end
   # POST /battles
   # POST /battles.json
@@ -82,6 +84,6 @@ class BattlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def battle_params
-      params.require(:battle).permit(:offense_id, :defense_id, :name)
+      params.require(:battle).permit(:offense_id, :defense_id, :name, :iterations)
     end
 end

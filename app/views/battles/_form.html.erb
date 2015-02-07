@@ -20,6 +20,11 @@
   <div class="col-md-2 no-pad">
     <%= f.select :defense_id, options_from_collection_for_select(Fleet.all , :id, :name), prompt: "Select Defense", class: 'form-control' %>
   </div>
+
+  <div class="col-md-3">
+    <%= f.number_field :iterations, placeholder: '# iterations', class: 'form-control' %>
+  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

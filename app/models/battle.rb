@@ -53,11 +53,10 @@ class Battle < ActiveRecord::Base
 	end
 	def simulate
 		result = {}
-		iterations = 200
 		winners = []
 		@defense = Fleet.find(self.defense_id)
 		@offense = Fleet.find(self.offense_id)
-		for i in 0...iterations
+		for i in 0...self.iterations
 			#create hash of ships and damage
 			@offensive_ships = {}
 			@defensive_ships = {}
@@ -145,9 +144,10 @@ class Battle < ActiveRecord::Base
 		defensive_wins = winners.select{ |val| val == :defense}.count
 
 		result[:winner] = offensive_wins > defensive_wins ? "Offense" : "Defense"
-		result[:win_percentage] = offensive_wins > defensive_wins ? 
-			100.0 * offensive_wins/(offensive_wins + defensive_wins) : 
-			100.0 * defensive_wins/(offensive_wins + defensive_wins)
+		result[:winner_wins] =  offensive_wins > defensive_wins ? offensive_wins : defensive_wins
+		result[:loser_wins] =  offensive_wins > defensive_wins ? defensive_wins : offensive_wins
+		result[:win_percentage] = 100.0 * result[:winner_wins].to_f / (result[:loser_wins].to_f + result[:winner_wins].to_f)
+		
 		return result
 	end
 end
