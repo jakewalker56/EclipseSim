@@ -1,0 +1,23 @@
+<h1>Listing fleets</h1>
+
+<table class='table table-bordered table-hover table-striped'>
+  <thead>
+    <tr>
+      <th>Fleet</th>
+      <th># Ships</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fleets.each do |fleet| %>
+      <tr>
+        <td><%= link_to fleet.name, fleet %></td>
+        <td><%= fleet.ships.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fleet', new_fleet_path, class: 'btn btn-primary' %>

@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<table class='table table-bordered table-hover table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Targetting</th>
+      <th>Hull</th>
+      <th>Shield</th>
+      <th>Initiative</th>
+      <th>Cannons</th>
+      <th>Missiles</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fleet.ships.each do |ship| %>
+      <tr>
+        <td><%= ship.name %></td>
+        <td><%= ship.targetting %></td>
+        <td><%= ship.hull %></td>
+        <td><%= ship.shield %></td>
+        <td><%= ship.initiative %></td>
+        <td>
+	        <table class='table table-bordered table-hover table-striped'>
+	        	<thead>
+	        		<tr>
+	        			<th>Dice</th>
+	        			<th>Power</th>
+	        			<th></th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+			        <% ship.cannons.each do |cannon| %>
+			        	<tr>
+			        		<td><%= cannon.dice %></td>
+			        		<td><%= cannon.power %></td>
+			        		<td><%= link_to 'Destroy', fleet_ship_cannon_path(@fleet, ship, cannon), method: :delete %>
+			        	</tr>
+			        <% end %>
+			    </tbody>
+			</table>
+			<%= link_to 'Add Cannon', new_fleet_ship_cannon_path(@fleet, ship), class: 'btn btn-small btn-success'%>
+		</td>
+		<td>
+			<table class='table table-bordered table-hover table-striped'>
+	        	<thead>
+	        		<tr>
+	        			<th>Dice</th>
+	        			<th>Power</th>
+	        			<th></th>
+	        		</tr>
+	        	</thead>
+	        	<tbody>
+			        <% ship.missiles.each do |missile| %>
+			        	<tr>
+			        		<td><%= missile.dice %></td>
+			        		<td><%= missile.power %></td>
+			        		<td><%= link_to 'Destroy', fleet_ship_missile_path(@fleet, ship, missile), method: :delete %>
+			        	</tr>
+			        <% end %>
+			    </tbody>
+			</table>
+			<%= link_to 'Add Missile', new_fleet_ship_missile_path(@fleet, ship), class: 'btn btn-small btn-success' %>
+		</td>
+       <td><%= link_to 'Edit Ship', edit_fleet_ship_path(@fleet, ship) %></td>
+       <td><%= link_to 'Duplicate Ship', fleet_ship_duplicate_path(@fleet, ship) %></td>
+       <td><%= link_to 'Destroy', fleet_ship_path(@fleet, ship), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Ship', new_fleet_ship_path(@fleet) %> |
+<%= link_to 'Edit Fleet', edit_fleet_path(@fleet) %> |
+<%= link_to 'Back', fleets_path %>

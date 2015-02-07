@@ -1,0 +1,33 @@
+<%= form_for [@fleet, @ship] do |f| %>
+  <% if @ship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ship.errors.count, "error") %> prohibited this ship from being saved:</h2>
+
+      <ul>
+      <% @ship.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-3">
+    <%= f.text_field :name, placeholder: 'Ship Name', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :targetting, placeholder: 'Targetting bonus', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :hull, placeholder: 'Hull', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :shield, placeholder: 'shield bonus', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :initiative, placeholder: 'initiative', class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

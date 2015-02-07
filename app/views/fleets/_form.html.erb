@@ -1,0 +1,21 @@
+<%= form_for(@fleet) do |f| %>
+  <% if @fleet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fleet.errors.count, "error") %> prohibited this fleet from being saved:</h2>
+
+      <ul>
+      <% @fleet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-3">
+    <%= f.text_field :name, placeholder: 'Fleet Name', class: 'form-control' %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Offense: <%= @offense.name %></h3>
+<h3>Defense: <%= @defense.name %></h3>
+
+
+<%= link_to 'Simulate Battle', battle_simulate_path(@battle), class: 'btn btn-primary' %> |
+
+<%= link_to 'Edit', edit_battle_path(@battle) %> |
+<%= link_to 'Back', battles_path %>

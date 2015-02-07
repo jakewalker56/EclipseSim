@@ -1,0 +1,23 @@
+<%= form_for [@fleet, @ship, @cannon] do |f| %>
+  <% if @cannon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cannon.errors.count, "error") %> prohibited this cannon from being saved:</h2>
+
+      <ul>
+      <% @cannon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-3">
+    <%= f.text_field :dice, placeholder: '# Dice', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :power, placeholder: 'Damage per hit', class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

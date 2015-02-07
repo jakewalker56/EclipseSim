@@ -1,0 +1,26 @@
+<%= form_for(@battle) do |f| %>
+  <% if @battle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@battle.errors.count, "error") %> prohibited this battle from being saved:</h2>
+
+      <ul>
+      <% @battle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-3">
+    <%= f.text_field :name, placeholder: 'Battle Name', class: 'form-control' %>
+  </div>
+  <div class="col-md-2 no-pad">
+    <%= f.select :offense_id, options_from_collection_for_select(Fleet.all, :id, :name), prompt: "Select Offense", class: 'form-control' %>
+  </div>
+  <div class="col-md-2 no-pad">
+    <%= f.select :defense_id, options_from_collection_for_select(Fleet.all , :id, :name), prompt: "Select Defense", class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

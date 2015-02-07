@@ -1,0 +1,22 @@
+<%= form_for [@fleet, @ship, @missile] do |f| %>
+  <% if @missile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@missile.errors.count, "error") %> prohibited this missile from being saved:</h2>
+
+      <ul>
+      <% @missile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-3">
+    <%= f.text_field :dice, placeholder: '# Dice', class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= f.text_field :power, placeholder: 'Damage per hit', class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

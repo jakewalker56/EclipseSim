@@ -1,0 +1,23 @@
+<h1>Listing cannons</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cannons.each do |cannon| %>
+      <tr>
+        <td><%= link_to 'Show', cannon %></td>
+        <td><%= link_to 'Edit', edit_cannon_path(cannon) %></td>
+        <td><%= link_to 'Destroy', cannon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cannon', new_cannon_path %>
