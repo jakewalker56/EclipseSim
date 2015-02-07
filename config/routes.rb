@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   
   
 
-  
+  root to: "battles#index"
+
   resources :battles do
     get '/simulate' => 'battles#simulate', as: "simulate"
   end

@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @fleet.ships.each do |ship| %>
+    <% @fleet.ships.sort_by{|ship| ship.name + ship.id.to_s}.each do |ship| %>
       <tr>
         <td><%= ship.name %></td>
         <td><%= ship.targetting %></td>
